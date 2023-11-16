@@ -1,5 +1,18 @@
-# Object file
-*.o
+def minrashod(N, rasstoianie, tarifi):
+    rashod = float('inf')
+    m = []
 
-# Ada Library Information
-*.ali
+    matrrashod = [[0] * N for _ in range(N)]
+
+    for i in range(N):
+        for j in range(N):
+            matrrashod[i][j] = rasstoianie[j] * tarifi[i]
+
+    for i in range(N):
+        mesto = sorted(range(N), key=lambda x: matrrashod[i][x])
+        tekushirashod = sum(matrrashod[j][mesto[j]] for j in range(N))
+
+        if tekushirashod < rashod:
+            rashod = tekushirashod
+            m = [x + 1 for x in mesto]
+    return m, rashod
