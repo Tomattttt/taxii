@@ -16,3 +16,15 @@ def minrashod(N, rasstoianie, tarifi):
             rashod = tekushirashod
             m = [x + 1 for x in mesto]
     return m, rashod
+
+N = int(input("Количество сотрудников? "))
+distances = list(map(int, input("Расстояние от работы до дома? (через пробел для каждого сотрудника) ").split()))
+tarifi = list(map(int, input("Тарифы за проезд для каждого сотрудника соответственно?(через пробел для каждого сотрудника) ").split()))
+
+mesto, rashodi = minrashod(N, distances, tarifi)
+print("Вариант рассадки: " + " ".join(map(str, mesto)))
+print("Стоимость тарифа")
+if rashodi < 1000:
+    print(f"{rashodi:.2f} рубля")
+else:
+    print(f"{rashodi:.2f} рублей")
